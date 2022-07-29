@@ -4,10 +4,10 @@
 VERSION=1.0
 
 #Requires ppm version
-PPM_VERSION=0.13
+PPM_VERSION=0.8
 
 #Requires PPx version
-PPX_VERSION=18403
+PPX_VERSION=186
 
 #Requires PPx Script Module version
 SCRIPT_VERSION=18
