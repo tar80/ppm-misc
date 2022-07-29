@@ -115,7 +115,7 @@ for (let i = 0, l = lines.length, m = 0; i < l; i++) {
 
 if (result.length > 0) {
   PPx.Execute(result.join('%:'));
-  PPx.Execute('%M_ppmHelp,0');
+  PPx.Execute('%M_ppmHelp,A');
   PPx.Execute('*deletecust "M_ppmHelp"');
   PPx.Execute('*cursor -5');
   PPx.Quit(1);
