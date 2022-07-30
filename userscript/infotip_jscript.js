@@ -9,8 +9,9 @@
 var NL_CHAR = '\r\n';
 
 /* Constants */
-var NAME_LENGTH = 12;
+var NAME_LENGTH = 13;
 var LINE_SEPARETOR = '-';
+var LINE_REPEAT_COUNT = 42;
 var EX_COMMENT = true;
 var EX_COMMENT_COL = 2;
 
@@ -26,7 +27,7 @@ var g_option = (function (arg) {
 
   return len === 0 ? '' : arg.Item(0);
 })(PPx.Arguments);
-var sep_line = LINE_SEPARETOR.repeat(43);
+var sep_line = LINE_SEPARETOR.repeat(LINE_REPEAT_COUNT);
 var data = PPx.Entry.Information.split(NL_CHAR);
 var prop = function (fix, name, key, reg, rep) {
   var name_ = name === null ? '' : name + ' '.repeat(Math.max(0, NAME_LENGTH - name.length)) + ':';

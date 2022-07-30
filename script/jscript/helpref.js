@@ -94,8 +94,8 @@ for (var i = 0, l = lines.length, m = 0; i < l; i++) {
 
   if (thisLine.toLowerCase().lastIndexOf(g_help.term) > 40) {
     thisLine.replace(reg, function (_p0, p1, p2) {
-      var p2_ = p2.replace(/%|<i>|<\/i>|&quot;|&amp;/g, function (m) {
-        return {'%': '%%%%', '<i>': '', '</i>': '', '&quot;': '', '&amp;': ''}[m];
+      var p2_ = p2.replace(/%|<i>|<\/i>|&quot;|&amp;/g, function (match) {
+        return {'%': '%%%%', '<i>': '', '</i>': '', '&quot;': '', '&amp;': ''}[match];
       });
       var m_ = String.fromCharCode(m + 65);
 

@@ -97,7 +97,7 @@ for (let i = 0, l = lines.length, m = 0; i < l; i++) {
     thisLine.replace(reg, (_p0, p1, p2) => {
       const p2_ = p2.replace(
         /%|<i>|<\/i>|&quot;|&amp;/g,
-        (m) => ({'%': '%%%%', '<i>': '', '</i>': '', '&quot;': '', '&amp;': ''}[m])
+        (match) => ({'%': '%%%%', '<i>': '', '</i>': '', '&quot;': '', '&amp;': ''}[match])
       );
       const m_ = String.fromCharCode(m + 65);
 

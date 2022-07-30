@@ -10,6 +10,7 @@
 /* Constants */
 const NAME_LENGTH = 12;
 const LINE_SEPARETOR = '-';
+const LINE_REPEAT_COUNT = 43;
 
 /* Initial */
 const g_option = ((arg = PPx.Arguments()) => {
@@ -17,7 +18,7 @@ const g_option = ((arg = PPx.Arguments()) => {
 
   return len === 0 ? '' : arg.Item(0);
 })();
-const sep_line = LINE_SEPARETOR.repeat(43);
+const sep_line = LINE_SEPARETOR.repeat(LINE_REPEAT_COUNT);
 const data = PPx.Entry.Information().split('\r\n');
 const prop = (name, key, reg, rep) => {
   const line = data.find((v) => v.includes(key));
