@@ -76,7 +76,7 @@ if (!fso.FileExists(g_help.page)) {
 
 if (g_help.term === '') {
   PPx.Execute('%K"@ESC"');
-  PPx.Execute('*execute ,' + g_help.browser + ' ' + g_help.frame);
+  PPx.Execute('*execute ,*launch ' + g_help.browser + ' ' + g_help.frame);
   PPx.Quit(1);
 }
 
@@ -104,7 +104,7 @@ for (var i = 0, l = lines.length, m = 0; i < l; i++) {
           m_ +
           ': ' +
           p2_ +
-          '=' +
+          '=*launch ' +
           g_help.browser +
           ' file:///' +
           url +
