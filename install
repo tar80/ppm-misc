@@ -1,7 +1,7 @@
 ﻿PPM_PLUGIN_NAME=ppm-misc
 
 #Plugin version
-VERSION=1.0
+VERSION=1.1
 
 #Requires ppm version
 PPM_VERSION=0.8
@@ -19,7 +19,7 @@ EXECUTABLES=
 MODULES=
 
 #Comma separated dependent plugins. Just a note
-DEPENDENCIES=
+DEPENDENCIES=PPXWIN.DLL
 
 #CodeType permisson. 0:No restriction | 1:Not use multiByte | 2:Not use unicode
 CODETYPE_PERMISSION=1
