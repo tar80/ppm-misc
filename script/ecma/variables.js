@@ -45,7 +45,7 @@ const output = ((args = PPx.Arguments) => {
   for (let i = 1, l = args.length; i < l; i++) {
     const v = args(i);
     result.push(
-      v.indexOf('$') === 0 ? `PPx.${v.slice(1)}\t${PPx[v.slice(1)]}` : `${v}\t${PPx.Extract(v)}`
+      v.indexOf('$') === 0 ? `PPx.${v.slice(1)}\t${PPx[v.slice(1)]}` : `${v}:\t${PPx.Extract(v)}`
     );
   }
 

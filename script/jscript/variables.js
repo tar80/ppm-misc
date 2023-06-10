@@ -45,7 +45,7 @@ var output = (function (args) {
     var v = args(i);
     result.push(
       v.indexOf('$') === 0
-        ? 'PPx.' + v.slice(1) + '\t' + PPx[v.slice(1)]
+        ? 'PPx.' + v.slice(1) + ':\t' + PPx[v.slice(1)]
         : v + '\t' + PPx.Extract(v)
     );
   }

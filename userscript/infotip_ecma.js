@@ -10,7 +10,7 @@
 /* Constants */
 const NAME_LENGTH = 12;
 const LINE_SEPARETOR = '-';
-const LINE_REPEAT_COUNT = 43;
+const LINE_REPEAT_COUNT = 42;
 
 /* Initial */
 const g_option = ((arg = PPx.Arguments()) => {
@@ -55,7 +55,14 @@ const choiceProp = (pos, name, key, reg, rep) => {
 };
 
 /* Create an InfoTip */
-// Fixed entries
+/**
+ * 値がない場合でも項目名が表示される項目
+ *
+ * @param {string} name  - 任意の項目名
+ * @param {string} key   - プロパティ名
+ * @param {string} [reg] - 正規表現(プロパティの値から切り出す範囲)
+ * @param {string} [rep] - 置換文字列
+ */
 const infoTip = [
   `${PPx.Extract('%C')}`,
   sep_line,
@@ -70,8 +77,17 @@ const infoTip = [
   prop('Last access', 'Last Access')
 ];
 
-// Non-Fixed entries
+/**
+ * 値がない場合は項目名が表示されない項目
+ *
+ * @param {number} pos   - 項目を挿入する(上からの)位置
+ * @param {string} name  - 任意の項目名
+ * @param {string} key   - プロパティ名
+ * @param {string} [reg] - 正規表現(プロパティの値から切り出す範囲)
+ * @param {string} [rep] - 置換文字列
+ */
 choiceProp(1, null, 'Comment');
+choiceProp(3, 'Contents', '内容の種類');
 
 {
   const startIdx = infoTip.findIndex((v) => v.includes(sep_line));

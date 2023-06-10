@@ -63,6 +63,15 @@ var prop = function (fix, name, key, reg, rep) {
 var info_tip = ['' + PPx.Extract('%C')];
 
 /* Create items */
+/**
+ * 任意の項目
+ *
+ * @param {boolean} fix  - 値がない(空)の場合に項目名を表示するかどうか
+ * @param {string} name  - 任意の項目名
+ * @param {string} key   - プロパティ名
+ * @param {string} [reg] - 正規表現(プロパティの値から切り出す範囲)
+ * @param {string} [rep] - 置換文字列
+ */
 prop(false, null, 'Comment');
 info_tip.push(sep_line);
 prop(true, 'Extension', 'Internal Type', /.*\(:(.*)\)/, '$1');
