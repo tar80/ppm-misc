@@ -121,4 +121,4 @@ if (result.length > 0) {
   PPx.Quit(1);
 }
 
-PPx.Execute(`*setcaption ${g_help.title}   *Not hits* %: %K"@^A`);
+PPx.Execute(`*setcaption ${g_help.title}   *no matches* %: %K"@^A`);
