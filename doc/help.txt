@@ -8,27 +8,24 @@ Repository: https://github.com/tar80/ppm-misc
 雑多なコマンドの寄せ集め。
 
 ===============================================================================
-動作環境
-
-
-===============================================================================
 構成ファイルの説明
 
-	script\helpref.js		オフラインヘルプ一行編集
-	script\toggleMarkHighlight.js	マークとハイライトをトグル
-	script\variables.js		変数参照用スクリプト
-	userscript\infotip.js		*enrytip fileinfo改造版
+	dist\displayVariables.js	変数参照用スクリプト
+	dist\infotip.js			*enrytip fileinfo改造版
+	dist\seearchHelp.stay.js	オフラインヘルプ検索
+	dist\setThumbnail.stay.js	サムネイルキャッシュ一括作成
+	dist\swapMarkHighlight.js	マークとハイライトをトグル
 
 ===============================================================================
 テーブル情報
 
-	M_ppmMIsc	雑多なコマンド用メニュー
+	M_ppmMisc	雑多なコマンド用メニュー
 
 ===============================================================================
 デフォルトキー設定
 
 PPc
-	F1	ヘルプ一行編集
+	F1	ヘルプ検索
 	I	インフォチップ
 	CTRL+SHIFT+SPACE	マーク/ハイライト トグル
 

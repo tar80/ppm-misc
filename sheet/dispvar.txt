@@ -1,0 +1,3 @@
+;$<name>は、PPxオブジェクトのプロパティを参照。 $DirectoryType,$EntryDisplayCount など
+%W,%n,%n#,%N,%N.,%FD,%FDV,%FDS,%*ppxlist(),%*mousepos(x),%*mousepos(y),%*cursorpos(x),%*cursorpos(y),%*linkedpath(%FDC),$DirectoryType
+

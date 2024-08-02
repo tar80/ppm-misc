@@ -1,0 +1,3 @@
+;入力ファイル名は %src% 、出力ファイル名は %dst% とする
+%m"movie 2s"  <mp4,webm> ffmpeg -i %src% -ss 00:00:02 -vf scale=900:-1 -frames:v 1 %dst%
+%m"movie 10s" <mp4,webm> ffmpeg -i %src% -ss 00:00:10 -vf scale=900:-1 -frames:v 1 %dst%
