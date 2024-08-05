@@ -20,6 +20,7 @@ const main = () => {
   atLoadEvent.hold('misc_swap', debug);
 };
 
+const ppx_finally = (): void => PPx.Echo('[WARN] instance remain swapMarkHighlight.stay.js');
 const ppx_resume = (hlNumber: string, debug: string): void => {
   const newCache: Cache = {};
   const isDebug = debug === 'DEBUG';

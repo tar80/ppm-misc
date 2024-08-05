@@ -8,9 +8,9 @@ import {isEmptyStr} from '@ppmdev/modules/guard.ts';
 import {langCreateTumbnail} from './mod/language.ts';
 import debug from '@ppmdev/modules/debug.ts';
 
-const FOLDER_THUMB = 'folder.jpg';
-const LIST_NAME = 'thumbcmd.txt';
 const PLUGIN_NAME = 'ppm-misc';
+const FOLDER_THUMB = 'folder.jpg';
+const LIST_NAME = '%sgu"ppmcache"\\complist\\thumbcmd.txt';
 
 const lang = langCreateTumbnail[useLanguage()];
 const ppcid = PPx.Extract('%n');
@@ -29,7 +29,7 @@ const main = (): void => {
     "'list':'on'," +
     "'module':'off'," +
     "'detail':'user1'," +
-    `'file':'%sgu"ppmcache"\\list\\${LIST_NAME}'`;
+    `'file':'${LIST_NAME}'`;
   const data = PPx.Extract(`%*script("%sgu'ppmlib'\\input.js","{${inputOpts}}")`);
 
   if (data === '[error]' || /^\s*;/.test(data)) {
@@ -42,6 +42,7 @@ const main = (): void => {
 };
 
 const ppx_Progress = () => fallback();
+const ppx_finally = (): void => PPx.Echo('[WARN] instance remain setThumbnail.stay.js');
 const ppx_resume = (): void => {
   if (!isOkey(lang.halfway)) {
     return;
@@ -51,12 +52,9 @@ const ppx_resume = (): void => {
   setThumbnail(true);
 };
 
-const extract = (cmd: string): string => PPx.Extract(`%*extract(${ppcid},"%(${cmd}%)")`);
-const linemessage = (msg: string): number => PPx.Execute(`*execute ${ppcid},*linemessage !"${msg}`);
-const isOkey = (msg: string): boolean => PPx.Execute(`%"${PLUGIN_NAME}"%Q"${msg}"`) === 0;
-
 const createThumbnail = (data: string): Function => {
   PPx.StayMode = 2;
+
   const instance = PPx.StayMode;
   const [exts, cmdSpec] = extractInputData(data);
   const cmdlines: string[] = [];
@@ -101,7 +99,7 @@ const setThumbnail = (hasData = false): void => {
   }
 
   if (PPx.Extract('%n') !== ppcid) {
-    PPx.Execute(`*focus ${ppcid}%:*wait 0,1`);
+    PPx.Execute(`*focus ${ppcid}`);
   }
 
   if (!isOkey(lang.start)) {
@@ -132,11 +130,11 @@ const setThumbnail = (hasData = false): void => {
 
     if (entry.Attributes & 16) {
       for (const name of names) {
-        const filename = `${entry.Name}\\${name}`;
+        const path = `${entry.Name}\\${name}`;
 
-        if (fso.FileExists(filename)) {
+        if (fso.FileExists(path)) {
           PPx.EntryIndex = entry.Index;
-          PPx.Execute(`*setentryimage ${filename} -save`);
+          PPx.Execute(`*setentryimage ${path} -save`);
           break;
         }
       }
@@ -156,6 +154,10 @@ const setThumbnail = (hasData = false): void => {
   PPx.Execute(`*delete ${thumbDir}`);
   linemessage(lang.completed);
 };
+
+const extract = (cmd: string): string => PPx.Extract(`%*extract(${ppcid},"%(${cmd}%)")`);
+const linemessage = (msg: string): number => PPx.Execute(`*execute ${ppcid},*linemessage !"${msg}`);
+const isOkey = (msg: string): boolean => PPx.Execute(`%"${PLUGIN_NAME}"%Q"${msg}"`) === 0;
 
 const hasImageView = (): boolean => {
   const rgx = /(\s|,|)n[\d,]+/;

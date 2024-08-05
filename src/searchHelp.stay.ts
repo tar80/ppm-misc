@@ -105,6 +105,7 @@ const rgx1 = /^<a href="ppxhelp\.html#(.*)"\starget="main">(.+)<\/a><br>$/;
 const rgx2 = /%|<\/?i>|&(quot|amp|lt|gt);/g;
 const convChars = {'%': '%%', '<i>': '', '</i>': '', '&quot;': '', '&amp;': '', '&lt;': '<', '&gt;': '>'} as const;
 
+const ppx_finally = (): void => PPx.Echo('[WARN] instance remain searchHelp.stay.js');
 const ppx_resume = (parent: string, searchWord: string): void => {
   if (isEmptyStr(searchWord)) {
     return;

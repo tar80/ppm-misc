@@ -14,7 +14,7 @@ import debug from '@ppmdev/modules/debug.ts';
 
 type Output = '0' | '1' | '2';
 const TITLE = 'ppm-misc variables';
-const LIST_NAME = 'dispvar.txt';
+const LIST_NAME = '%sgu"ppmcache"\\complist\\dispvar.txt';
 
 const main = () => {
   const args: string[] = validArgs();
@@ -34,7 +34,7 @@ const main = () => {
       "'list':'on'," +
       "'module':'off'," +
       "'detail':'user1'," +
-      `'file':'%sgu"ppmcache"\\list\\${LIST_NAME}'`;
+      `'file':'${LIST_NAME}'`;
     const data = PPx.Extract(`%*script("%sgu'ppmlib'\\input.js","{${inputOpts}}")`);
 
     if (data === '[error]' || /^\s*;/.test(data)) {

@@ -1,6 +1,6 @@
 {
   "name": "@ppmdev/ppm-misc",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "plugin for ppm",
   "type": "module",
   "scripts": {

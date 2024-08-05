@@ -1,7 +1,7 @@
 ﻿PPM_PLUGIN_NAME=ppm-misc
 
 #Plugin version
-VERSION=1.2.0
+VERSION=1.2.1
 
 #Requires ppm version
 PPM_VERSION=0.95
@@ -30,10 +30,10 @@ CODETYPE_PERMISSION=1
 SCRIPTTYPE_PERMISSION=0
 
 #To copy files in the Sheet directory. true | false
-COPY_FLAG=true
+COPY_FLAG=false
 
 #To copy files in the Userscript directory. true | false
 COPY_SCRIPT=true
 
 #Copy by specifying the directory-name
-SPECIFIC_COPY_DIR=
+SPECIFIC_COPY_DIR=complist
