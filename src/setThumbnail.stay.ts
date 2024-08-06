@@ -25,10 +25,10 @@ const main = (): void => {
   const inputOpts =
     `'title':'${lang.title}',` +
     "'mode':'e'," +
-    "'leavecancel':true," +
     "'list':'on'," +
     "'module':'off'," +
     "'detail':'user1'," +
+    "'leavecancel':false," +
     `'file':'${LIST_NAME}'`;
   const data = PPx.Extract(`%*script("%sgu'ppmlib'\\input.js","{${inputOpts}}")`);
 
@@ -110,6 +110,7 @@ const setThumbnail = (hasData = false): void => {
     PPx.Execute(`%j"${pwd}"`);
   }
 
+  // repeat until thumnail-mode is reached
   while (!hasImageView()) {
     if (!isOkey(lang.viewstyle)) {
       PPx.Execute(`*delete ${thumbDir}`);

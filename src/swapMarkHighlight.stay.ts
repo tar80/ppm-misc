@@ -13,7 +13,7 @@ type Cache = {[K in string]: HighlightNumber};
 let cache: Cache = {};
 
 const main = () => {
-  const [hlNumber, debug] = safeArgs('1', '');
+  const [hlNumber, debug] = safeArgs('1', '0');
 
   PPx.StayMode = 2;
   ppx_resume(hlNumber, debug);

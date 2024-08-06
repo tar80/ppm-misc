@@ -30,10 +30,10 @@ const main = () => {
     const inputOpts =
       `'title': '${TITLE}',` +
       "'mode':'e'," +
-      "'leavecancel':true," +
       "'list':'on'," +
       "'module':'off'," +
       "'detail':'user1'," +
+      "'leavecancel':false," +
       `'file':'${LIST_NAME}'`;
     const data = PPx.Extract(`%*script("%sgu'ppmlib'\\input.js","{${inputOpts}}")`);
 

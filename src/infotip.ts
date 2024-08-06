@@ -74,7 +74,7 @@ const align = (name: string): string => ' '.repeat(Math.max(0, USER.name_length 
 
 const getCommentIdx = (): number => {
   for (var i = 1, k = infoTip.length; i < k; i++) {
-    var line_ = infoTip[i];
+    const line_ = infoTip[i];
 
     if (~line_.indexOf(sepalateLine)) {
       return i;

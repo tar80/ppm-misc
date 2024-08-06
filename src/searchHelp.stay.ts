@@ -15,7 +15,8 @@ import {atActiveEvent} from '@ppmdev/modules/staymode.ts';
 import debug from '@ppmdev/modules/debug.ts';
 
 const MENU_NAME = 'M_ppmHelp';
-const ADDRESS_PPX_HOME = 'https://raw.githubusercontent.com/toroidj/toroidj.github.io/master';
+const ADDRESS_PPX_HOME = 'http://toro.d.dooo.jp';
+// const ADDRESS_PPX_HOME = 'https://raw.githubusercontent.com/toroidj/toroidj.github.io/master';
 const HTML_ENCODE = 'utf8';
 const HTML_LINEFEED = '\n';
 const PAGE = {
@@ -31,7 +32,7 @@ const lang = langSearchHelp[useLanguage()];
 let cache: string[] = [];
 
 const main = (): void => {
-  const [parent, searchWord, isDebug] = safeArgs('', '', '');
+  const [parent, searchWord, isDebug] = safeArgs('', '', '0');
 
   if (isEmptyStr(parent) || !fso.FolderExists(parent)) {
     PPx.Echo(lang.failedGetPath);
