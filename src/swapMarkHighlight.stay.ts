@@ -21,9 +21,9 @@ const main = () => {
 };
 
 const ppx_finally = (): void => PPx.Echo('[WARN] instance remain swapMarkHighlight.stay.js');
-const ppx_resume = (hlNumber: string, debug: string): void => {
+const ppx_resume = (hlNumber: string, debugMode: string): void => {
   const newCache: Cache = {};
-  const isDebug = debug === 'DEBUG';
+  const isDebug = debugMode === 'DEBUG';
   const log: string[] = ['[DEBUG]'];
 
   for (const entry = PPx.Entry.AllEntry; !entry.atEnd(); entry.moveNext()) {

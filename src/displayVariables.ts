@@ -7,10 +7,10 @@
 
 import {validArgs} from '@ppmdev/modules/argument.ts';
 import {info, tmp} from '@ppmdev/modules/data.ts';
+import debug from '@ppmdev/modules/debug.ts';
 import {writeLines} from '@ppmdev/modules/io.ts';
 import {pathSelf} from '@ppmdev/modules/path.ts';
 import {runPPe} from '@ppmdev/modules/run.ts';
-import debug from '@ppmdev/modules/debug.ts';
 
 type Output = '0' | '1' | '2';
 const TITLE = 'ppm-misc variables';
@@ -29,10 +29,10 @@ const main = () => {
   if (len === 1) {
     const inputOpts =
       `'title': '${TITLE}',` +
-      "'mode':'e'," +
+      "'mode':'g'," +
       "'list':'on'," +
       "'module':'off'," +
-      "'detail':'user1'," +
+      "'detail':'user1 hist'," +
       "'leavecancel':false," +
       `'file':'${LIST_NAME}'`;
     const data = PPx.Extract(`%*script("%sgu'ppmlib'\\input.js","{${inputOpts}}")`);
@@ -51,8 +51,8 @@ const main = () => {
     let variable = args.shift();
 
     if (variable?.indexOf('$') === 0) {
-      const method = variable.slice(1);
-      variable = `PPx.${method}:\t${PPx[method as keyof typeof PPx]}`;
+      const item = variable.slice(1);
+      variable = `PPx.${item}:\t${_getValue(item)}`;
     } else {
       variable = `${variable}:\t${PPx.Extract(variable)}`;
     }
@@ -76,6 +76,16 @@ const display = {
   2(data: string[]) {
     return PPx.report(data.join(info.nlcode));
   }
+};
+
+type PPxMethod = keyof typeof PPx;
+const _rgx = /^([^(]+)\(([^)]+)\)$/;
+const _getValue = (item: string): string => {
+  if (!~item.indexOf('(')) {
+    return PPx[item as PPxMethod];
+  }
+
+  return item.replace(_rgx, (_match, method, param) => PPx[method as PPxMethod](param));
 };
 
 main();

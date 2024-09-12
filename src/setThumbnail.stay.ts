@@ -1,12 +1,11 @@
-/* @file Create thumbnails and set it in the entries
- */
+/* @file Create thumbnails and set it in entries */
 
 import '@ppmdev/polyfills/arrayIndexOf.ts';
-import fso from '@ppmdev/modules/filesystem.ts';
 import {useLanguage} from '@ppmdev/modules/data.ts';
+import debug from '@ppmdev/modules/debug.ts';
+import fso from '@ppmdev/modules/filesystem.ts';
 import {isEmptyStr} from '@ppmdev/modules/guard.ts';
 import {langCreateTumbnail} from './mod/language.ts';
-import debug from '@ppmdev/modules/debug.ts';
 
 const PLUGIN_NAME = 'ppm-misc';
 const FOLDER_THUMB = 'folder.jpg';
@@ -16,9 +15,8 @@ const lang = langCreateTumbnail[useLanguage()];
 const ppcid = PPx.Extract('%n');
 const pwd = PPx.Extract('%FD');
 const thumbDir = PPx.Extract('%*temp(misc_thumb,d)');
-const hasMark = PPx.EntryMarkCount > 0;
-const entry = PPx.Entry.AllEntry;
-let fallback: Function;
+const entry = PPx.EntryMarkCount === 0 ? PPx.Entry.AllEntry : PPx.Entry.AllMark;
+let fallback: () => void;
 let [allCount, count] = [0, 0];
 
 const main = (): void => {
@@ -52,7 +50,7 @@ const ppx_resume = (): void => {
   setThumbnail(true);
 };
 
-const createThumbnail = (data: string): Function => {
+const createThumbnail = (data: string): (() => void) => {
   PPx.StayMode = 2;
 
   const instance = PPx.StayMode;
@@ -61,10 +59,6 @@ const createThumbnail = (data: string): Function => {
 
   for (; !entry.atEnd(); entry.moveNext()) {
     const entryName = entry.Name;
-
-    if (hasMark && entry.Mark === 0) {
-      continue;
-    }
 
     if (entry.Attributes & 16 || !~exts.indexOf(PPx.Extract(`%*name(T,"${entryName}")`))) {
       continue;
@@ -125,10 +119,6 @@ const setThumbnail = (hasData = false): void => {
   const names = getFolderThumbNames();
 
   for (; !entry.atEnd(); entry.moveNext()) {
-    if (hasMark && entry.Mark === 0) {
-      continue;
-    }
-
     if (entry.Attributes & 16) {
       for (const name of names) {
         const path = `${entry.Name}\\${name}`;

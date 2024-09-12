@@ -9,11 +9,11 @@ var infoTip = [];
 
 /** ユーザー指定 **/
 var USER = {
-  name_length: 12,		//項目欄の桁揃え文字数
-  line_separetor: '-',		//区切り文字
-  line_repeat_count: 42,	//区切りの文字数
-  ex_comment: true,		//拡張コメントを表示するかどうか
-  ex_comment_row: 2		//拡張コメントを何行目から表示するか
+  name_length: 12, //項目欄の桁揃え文字数
+  line_separetor: '-', //区切り文字
+  line_repeat_count: 42, //区切りの文字数
+  ex_comment: true, //拡張コメントを表示するかどうか
+  ex_comment_row: 2 //拡張コメントを何行目から表示するか
 };
 var sepalateLine = USER.line_separetor.repeat(USER.line_repeat_count);
 var getTipItems = function getTipItems() {
@@ -47,9 +47,9 @@ var getTipItems = function getTipItems() {
 var main = function main() {
   var _safeArgs = safeArgs('', false),
     options = _safeArgs[0],
-    isDisplayEx = _safeArgs[1];
+    showExComment = _safeArgs[1];
   getTipItems();
-  if (!!isDisplayEx) {
+  if (showExComment) {
     var idx = getCommentIdx();
     for (var i = 1, k = 10, next = 1; i <= k; i++) {
       var comment = PPx.Entry.GetComment(i);

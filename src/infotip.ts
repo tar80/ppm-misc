@@ -51,10 +51,10 @@ const getTipItems = (): void => {
 };
 
 const main = (): void => {
-  const [options, isDisplayEx] = safeArgs('', false);
+  const [options, showExComment] = safeArgs('', false);
   getTipItems();
 
-  if (!!isDisplayEx) {
+  if (showExComment) {
     const idx = getCommentIdx();
     for (let i = 1, k = 10, next = 1; i <= k; i++) {
       const comment = PPx.Entry.GetComment(i);
