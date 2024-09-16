@@ -105,7 +105,7 @@ var getCommentIdx = function getCommentIdx() {
   }
   return USER.ex_comment_row;
 };
-var data = PPx.Entry.Information().split(nlcode);
+var data = PPx.Entry.Information.split(nlcode);
 var dataLength = data.length;
 var _searchProp = function _searchProp(key) {
   for (var i = 0; i < dataLength; i++) {

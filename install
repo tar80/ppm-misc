@@ -1,7 +1,7 @@
 ﻿PPM_PLUGIN_NAME=ppm-misc
 
 #Plugin version
-VERSION=1.2.3
+VERSION=1.2.4
 
 #Requires ppm version
 PPM_VERSION=0.95
