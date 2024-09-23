@@ -1,18 +1,18 @@
 ﻿PPM_PLUGIN_NAME=ppm-misc
 
 #Plugin version
-VERSION=1.2.4
+VERSION=1.2.5
 
 #Requires ppm version
 PPM_VERSION=0.95
 
 #Requires PPx version
-PPX_VERSION=198
+PPX_VERSION=199
 
 #Requires PPx Script Module version
-SCRIPT_VERSION=21
-CV8_VERSION=3
-QJS_VERSION=0
+SCRIPT_VERSION=22
+CV8_VERSION=4
+QJS_VERSION=1
 
 #Requires external executables. Separated dy commas
 EXECUTABLES=
