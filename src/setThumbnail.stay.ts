@@ -23,7 +23,8 @@ const main = (): void => {
   const inputOpts =
     `'title':'${lang.title}',` +
     "'mode':'e'," +
-    "'list':'on'," +
+    "'autoselect':true," +
+    "'list':'off'," +
     "'module':'off'," +
     "'detail':'user1'," +
     "'leavecancel':false," +
