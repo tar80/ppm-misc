@@ -20,6 +20,7 @@ let fallback: () => void;
 let [allCount, count] = [0, 0];
 
 const main = (): void => {
+  linemessage(' ');
   const inputOpts =
     `'title':'${lang.title}',` +
     "'mode':'e'," +
@@ -48,6 +49,7 @@ const ppx_resume = (): void => {
   }
 
   PPx.StayMode = 0;
+  linemessage(' ');
   setThumbnail(true);
 };
 
@@ -72,11 +74,11 @@ const createThumbnail = (data: string): (() => void) => {
   entry.Reset();
 
   return (): void => {
-    linemessage(`${lang.progress} ${count}/${allCount}`);
+    linemessage(`${lang.progress} ${count}/${allCount}`, true);
     count++;
 
     if (cmdlines.length > 0) {
-      PPx.Execute(`*run -min -nostartmsg -noppb %0ppbw.exe -c ${cmdlines.shift()}%%&*execute ${ppcid},*script ":${instance},ppx_Progress"`);
+      PPx.Execute(`*run -min -nostartmsg -noppb %0ppbw.exe -c ${cmdlines.shift()}%%:*execute ${ppcid},*script ":${instance},ppx_Progress"`);
 
       return;
     }
@@ -148,7 +150,10 @@ const setThumbnail = (hasData = false): void => {
 };
 
 const extract = (cmd: string): string => PPx.Extract(`%*extract(${ppcid},"%(${cmd}%)")`);
-const linemessage = (msg: string): number => PPx.Execute(`*execute ${ppcid},*linemessage !"${msg}`);
+const linemessage = (msg: string, hold?: boolean): number => {
+  const p = hold ? 'P' : '';
+  return PPx.Execute(`*execute ${ppcid}, *linemessage !${p}"${msg}`);
+};
 const isOkey = (msg: string): boolean => PPx.Execute(`%"${PLUGIN_NAME}"%Q"${msg}"`) === 0;
 
 const hasImageView = (): boolean => {
