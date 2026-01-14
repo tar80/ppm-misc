@@ -175,7 +175,7 @@ const _rgxGroup = /(%src%|%dst%)/g;
 const createCmdline = (data: string, src: string, dst: string): string => {
   const group = {'%src%': src, '%dst%': dst} as const;
 
-  return data.replace(_rgxGroup, (m) => group[m as CaptureGroup]);
+  return data.replace(_rgxGroup, (m) => `"${group[m as CaptureGroup]}"`);
 };
 
 const extractInputData = (data: string): [string[], string] => {
